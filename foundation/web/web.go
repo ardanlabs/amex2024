@@ -3,6 +3,8 @@ package web
 import (
 	"context"
 	"net/http"
+
+	"github.com/google/uuid"
 )
 
 type HandlerFunc func(ctx context.Context, w http.ResponseWriter, r *http.Request) error
@@ -27,8 +29,9 @@ func (a *App) HandleFunc(pattern string, handlerFunc HandlerFunc, mw ...MidFunc)
 	h := func(w http.ResponseWriter, r *http.Request) {
 
 		// WE CAN DO WHAT WE WANT HERE
+		ctx := setTraceID(r.Context(), uuid.NewString())
 
-		handlerFunc(r.Context(), w, r)
+		handlerFunc(ctx, w, r)
 
 		// WE CAN DO WHAT WE WANT HERE
 	}
