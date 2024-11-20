@@ -1,6 +1,7 @@
 package errs
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"runtime"
@@ -93,4 +94,21 @@ func NewError(err error) *Error {
 // Error implements the error interface.
 func (e *Error) Error() string {
 	return e.Message
+}
+
+// Encode implements the encoder interface.
+func (e *Error) Encode() ([]byte, string, error) {
+	data, err := json.Marshal(e)
+	return data, "application/json", err
+}
+
+// HTTPStatus implements the web package httpStatus interface so the
+// web framework can use the correct http status.
+func (e *Error) HTTPStatus() int {
+	return httpStatus[e.Code]
+}
+
+// Equal provides support for the go-cmp package and testing.
+func (e *Error) Equal(e2 *Error) bool {
+	return e.Code == e2.Code && e.Message == e2.Message
 }
