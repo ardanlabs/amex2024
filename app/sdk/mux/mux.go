@@ -1,6 +1,8 @@
 package mux
 
 import (
+	"context"
+
 	"github.com/ardanlabs/service/app/domain/testapp"
 	"github.com/ardanlabs/service/app/sdk/mid"
 	"github.com/ardanlabs/service/foundation/logger"
@@ -8,8 +10,13 @@ import (
 )
 
 func WebAPI(log *logger.Logger) *web.App {
-	app := web.NewApp(
+	logger := func(ctx context.Context, msg string, args ...any) {
+		log.Info(ctx, msg, args...)
+	}
+
+	app := web.NewApp(logger,
 		mid.Logger(log),
+		mid.Error(log),
 	)
 
 	testapp.Routes(app)
