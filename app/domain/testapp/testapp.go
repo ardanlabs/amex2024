@@ -2,16 +2,15 @@ package testapp
 
 import (
 	"context"
-	"encoding/json"
 	"net/http"
+
+	"github.com/ardanlabs/service/foundation/web"
 )
 
-func test(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
-	status := struct {
-		Status string
-	}{
+func test(ctx context.Context, r *http.Request) web.Encoder {
+	resp := status{
 		Status: "OK",
 	}
 
-	return json.NewEncoder(w).Encode(status)
+	return resp
 }
