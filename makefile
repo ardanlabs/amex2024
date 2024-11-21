@@ -110,6 +110,9 @@ dev-describe-sales:
 dev-migrate:
 	go run api/tooling/admin/main.go
 
+dev-logs-db:
+	kubectl logs --namespace=$(NAMESPACE) -l app=database --all-containers=true -f --tail=100
+
 # ==============================================================================
 # Modules support
 
