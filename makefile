@@ -141,3 +141,10 @@ statsviz:
 
 pprof:
 	open http://localhost:3010/debug/pprof
+
+
+# ==============================================================================
+# Administration
+
+pgcli:
+	pgcli postgresql://postgres:postgres@localhost
