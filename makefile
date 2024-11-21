@@ -107,6 +107,9 @@ dev-describe-deployment:
 dev-describe-sales:
 	kubectl describe pod --namespace=$(NAMESPACE) -l app=$(SALES_APP)
 
+dev-migrate:
+	go run api/tooling/admin/main.go
+
 # ==============================================================================
 # Modules support
 

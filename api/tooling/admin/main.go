@@ -24,7 +24,7 @@ func run() error {
 		Name:         "postgres",
 		MaxIdleConns: 0,
 		MaxOpenConns: 0,
-		DisableTLS:   false,
+		DisableTLS:   true,
 	}
 
 	if err := Migrate(cfg); err != nil {
