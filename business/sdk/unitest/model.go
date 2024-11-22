@@ -9,8 +9,6 @@ import (
 // User represents an app user specified for the test.
 type User struct {
 	userbus.User
-	Products []productbus.Product
-	Homes    []homebus.Home
 }
 
 // SeedData represents data that was seeded for the test.
