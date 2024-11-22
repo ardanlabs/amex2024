@@ -38,7 +38,8 @@ type Business struct {
 
 func NewBusiness(log *logger.Logger, storer Storer) *Business {
 	return &Business{
-		log: log,
+		log:    log,
+		storer: storer,
 	}
 }
 

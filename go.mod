@@ -6,6 +6,7 @@ require (
 	github.com/ardanlabs/conf/v3 v3.2.0
 	github.com/ardanlabs/darwin/v3 v3.3.1
 	github.com/arl/statsviz v0.6.0
+	github.com/google/go-cmp v0.3.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.7.1
 	github.com/jmoiron/sqlx v1.4.0
